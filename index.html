@@ -2777,7 +2777,43 @@
     /* =========================================================================
        12. PROFILE, BODY MEASUREMENTS & BACKUP/IMPORT/RESET
        ========================================================================= */
-    function renderProfile() {
+    function ensureProfilePassButton() {
+  const profView = document.getElementById("view-profile");
+  if (!profView) return;
+
+  let card = document.getElementById("cmyb-profile-pass-card");
+  if (!card) {
+    card = document.createElement("div");
+    card.id = "cmyb-profile-pass-card";
+    card.className = "card card-hero stack-sm";
+    profView.insertBefore(card, profView.firstChild);
+  }
+
+  const now = Date.now();
+  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+  const start = Number(localStorage.getItem("cmyb_t0") || now);
+  const until = Number(localStorage.getItem("cmyb_until") || 0);
+  const activeEnd = Math.max(now < start + thirtyDays ? start + thirtyDays : 0, now < until ? until : 0);
+  const daysLeft = Math.max(0, Math.ceil((activeEnd - now) / 86400000));
+  const id = localStorage.getItem("cmyb_uid") || "CMYB-ACTIVE";
+
+  const statusLabel = now < until
+    ? "MONTHLY PASS ACTIVE"
+    : (daysLeft > 0 ? "30-DAY FREE TRIAL" : "PASS EXPIRED");
+
+  card.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+      <span class="chip chip-accent">${statusLabel}</span>
+      <span class="small-muted">${escapeHtml(id)}</span>
+    </div>
+    <div class="h2">${daysLeft > 0 ? `${daysLeft} Day${daysLeft === 1 ? "" : "s"} Left` : "₹10 Monthly Pass Needed"}</div>
+    <p class="muted">₹10 / month via UPI (<b>xryptamal@fam</b>) with your monthly unlock code on WhatsApp.</p>
+    <button type="button" class="btn btn-outline-accent btn-sm" onclick="window.cmybOpen && window.cmybOpen(false)">
+      Open ₹10 QR & Unlock Code
+    </button>
+  `;
+}
+function renderProfile() {
       document.getElementById("prof-name").value = appState.profile.name || "";
       document.getElementById("prof-unit").value = appState.profile.unit || "kg";
       document.getElementById("prof-rest-sec").value = appState.profile.defaultRestSec || 90;
