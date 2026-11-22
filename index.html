@@ -731,6 +731,44 @@
       border-color: var(--accent);
     }
   </style>
+
+<style>
+  .cmyb-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 95;
+    background: rgba(6, 7, 10, 0.92);
+    backdrop-filter: blur(14px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .cmyb-gate.open { display: flex; }
+  .cmyb-gate-box {
+    width: 100%;
+    max-width: 430px;
+    background: #12141A;
+    border: 1px solid rgba(255, 94, 26, 0.4);
+    border-radius: 22px;
+    padding: 20px;
+    color: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cmyb-qr {
+    background: #FFFFFF;
+    padding: 12px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #0A0B0E;
+  }
+  .cmyb-qr img { width: 170px; height: 170px; display: block; }
+</style>
 </head>
 <body>
 
@@ -2927,5 +2965,125 @@
       }
     });
   </script>
+
+<div class="cmyb-gate" id="cmyb-gate">
+  <div class="cmyb-gate-box">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>&#8377;10 / MONTH PASS</strong>
+      <span id="cmyb-id" style="font-size:11px;color:#94A3B8"></span>
+      <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px">X</button>
+    </div>
+    <p style="font-size:13px;color:#94A3B8">
+      Pay <b>&#8377;10</b> via UPI QR (<b>xryptamal@fam</b>), message Amaldev.A on WhatsApp with your ID, and enter this month's unlock code.
+    </p>
+    <div class="cmyb-qr">
+      <img id="cmyb-qr-img" alt="UPI QR Code" />
+      <span style="font-size:12px;font-weight:700">xryptamal@fam</span>
+    </div>
+    <a id="cmyb-wa" target="_blank" rel="noopener" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#F8FAFC;text-decoration:none;font-weight:700">
+      Message Buddy on WhatsApp
+    </a>
+    <form onsubmit="cmybUnlock(event)" style="display:flex;flex-direction:column;gap:8px">
+      <input id="cmyb-code" placeholder="Enter monthly code" required style="height:42px;padding:0 12px;border-radius:10px;background:#0E1015;color:#F8FAFC;border:1px solid rgba(255,255,255,.15)" />
+      <div id="cmyb-err" style="font-size:12px;color:#EF4444;display:none"></div>
+      <button type="submit" id="cmyb-btn" style="height:44px;border:none;border-radius:12px;background:#FF5E1A;color:#0A0B0E;font-weight:800;cursor:pointer">
+        Unlock 30 Days
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  const WORKER = "https://buddy-gym-unlock.amalpc250.workers.dev";
+  const WA = "919746761731";
+  const UPI = "xryptamal@fam";
+  const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+  let hardLock = false;
+
+  function buddyId() {
+    let id = localStorage.getItem("cmyb_uid");
+    if (!id) {
+      id = "CMYB-" + Math.random().toString(36).slice(2, 6).toUpperCase() + "-" + Date.now().toString(36).slice(-4).toUpperCase();
+      localStorage.setItem("cmyb_uid", id);
+    }
+    return id;
+  }
+
+  window.cmybOpen = function (forceLock) {
+    hardLock = Boolean(forceLock);
+    const id = buddyId();
+    document.getElementById("cmyb-id").textContent = id;
+    document.getElementById("cmyb-close").style.display = hardLock ? "none" : "inline-block";
+    const upiUri = `upi://pay?pa=${encodeURIComponent(UPI)}&pn=Amaldev.A&am=10&cu=INR&tn=${encodeURIComponent("CALL ME YOUR BUDDY " + id)}`;
+    document.getElementById("cmyb-qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=${encodeURIComponent(upiUri)}`;
+    document.getElementById("cmyb-wa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hi Buddy! I paid Rs 10 for CALL ME YOUR BUDDY. ID: " + id)}`;
+    document.getElementById("cmyb-gate").classList.add("open");
+  };
+
+  window.cmybClose = function () {
+    if (!hardLock) {
+      document.getElementById("cmyb-gate").classList.remove("open");
+    }
+  };
+
+  window.cmybUnlock = async function (e) {
+    e.preventDefault();
+    const inp = document.getElementById("cmyb-code");
+    const err = document.getElementById("cmyb-err");
+    const btn = document.getElementById("cmyb-btn");
+    const code = inp.value.trim();
+    if (!code) return;
+
+    err.style.display = "none";
+    btn.disabled = true;
+    btn.textContent = "Verifying...";
+
+    try {
+      const res = await fetch(WORKER, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code, buddyId: buddyId() })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.valid || !data.unlockedUntil) {
+        throw new Error(data.error || "Invalid code");
+      }
+      localStorage.setItem("cmyb_until", String(data.unlockedUntil));
+      inp.value = "";
+      hardLock = false;
+      cmybClose();
+      alert("Unlocked for 30 days!");
+    } catch (ex) {
+      err.textContent = ex.message || "Could not verify code.";
+      err.style.display = "block";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Unlock 30 Days";
+    }
+  };
+
+  window.addEventListener("DOMContentLoaded", async () => {
+    let now = Date.now();
+    try {
+      const r = await fetch(WORKER);
+      if (r.ok) {
+        const j = await r.json();
+        if (j.serverNowMs) now = Math.max(now, Number(j.serverNowMs));
+      }
+    } catch (e) {}
+
+    let start = Number(localStorage.getItem("cmyb_t0"));
+    if (!start) {
+      start = now;
+      localStorage.setItem("cmyb_t0", String(start));
+    }
+    const until = Number(localStorage.getItem("cmyb_until") || 0);
+    if (!(now < start + THIRTY_DAYS || now < until)) {
+      cmybOpen(true);
+    }
+  });
+})();
+</script>
 </body>
 </html>
