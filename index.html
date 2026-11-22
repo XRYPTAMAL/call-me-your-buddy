@@ -296,7 +296,6 @@
       font-weight: 600;
     }
 
-    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -364,7 +363,6 @@
       width: 100%;
     }
 
-    /* Pills & Chips */
     .pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -396,7 +394,6 @@
       border-color: rgba(16, 185, 129, 0.3);
     }
 
-    /* Grid Helpers */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -423,7 +420,6 @@
       margin-top: 2px;
     }
 
-    /* Inputs */
     .field-group {
       display: flex;
       flex-direction: column;
@@ -651,7 +647,7 @@
     }
 
     /* =========================================================================
-       7. MODAL DIALOG & TOAST
+       7. MODAL DIALOG, TOAST & ₹10 SUBSCRIPTION GATE
        ========================================================================= */
     .modal-backdrop {
       position: fixed;
@@ -692,7 +688,7 @@
       bottom: calc(var(--nav-height) + 14px + env(safe-area-inset-bottom, 0px));
       left: 50%;
       transform: translateX(-50%) translateY(16px);
-      z-index: 70;
+      z-index: 105;
       background: #1E222D;
       color: #F8FAFC;
       border: 1px solid var(--accent-border);
@@ -730,45 +726,55 @@
     .library-item:active {
       border-color: var(--accent);
     }
-  </style>
 
-<style>
-  .cmyb-gate {
-    position: fixed;
-    inset: 0;
-    z-index: 95;
-    background: rgba(6, 7, 10, 0.92);
-    backdrop-filter: blur(14px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
-  .cmyb-gate.open { display: flex; }
-  .cmyb-gate-box {
-    width: 100%;
-    max-width: 430px;
-    background: #12141A;
-    border: 1px solid rgba(255, 94, 26, 0.4);
-    border-radius: 22px;
-    padding: 20px;
-    color: #F8FAFC;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .cmyb-qr {
-    background: #FFFFFF;
-    padding: 12px;
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    color: #0A0B0E;
-  }
-  .cmyb-qr img { width: 170px; height: 170px; display: block; }
-</style>
+    .cmyb-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 95;
+      background: rgba(6, 7, 10, 0.92);
+      backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .cmyb-gate.open {
+      display: flex;
+    }
+
+    .cmyb-gate-box {
+      width: 100%;
+      max-width: 430px;
+      background: var(--bg-surface);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+    }
+
+    .cmyb-qr {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #0A0B0E;
+    }
+
+    .cmyb-qr img {
+      width: 170px;
+      height: 170px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -792,9 +798,7 @@
   <!-- MAIN APPLICATION CONTENT -->
   <main class="main-container">
 
-    <!-- ===================================================================
-         SCREEN 1: DASHBOARD
-         =================================================================== -->
+    <!-- SCREEN 1: DASHBOARD -->
     <section id="view-dashboard" class="view-section active stack-md" aria-label="Dashboard">
       <div class="card card-hero stack-sm">
         <div class="eyebrow" id="dash-greeting">WELCOME BACK, BUDDY</div>
@@ -809,7 +813,6 @@
         </div>
       </div>
 
-      <!-- Key Metrics Grid -->
       <div class="grid-3">
         <div class="stat-tile">
           <div class="small-muted">CURRENT STREAK</div>
@@ -825,7 +828,6 @@
         </div>
       </div>
 
-      <!-- Weekly Split Snapshot -->
       <div class="card stack-sm">
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <h2 class="h2">This Week's Split</h2>
@@ -834,7 +836,6 @@
         <div id="dash-week-strip" class="stack-sm"></div>
       </div>
 
-      <!-- Quick Access to Recent Workout History -->
       <div class="card stack-sm">
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <h2 class="h2">Recent Workouts</h2>
@@ -844,9 +845,7 @@
       </div>
     </section>
 
-    <!-- ===================================================================
-         SCREEN 2: CUSTOM WORKOUT PLANNER
-         =================================================================== -->
+    <!-- SCREEN 2: CUSTOM WORKOUT PLANNER -->
     <section id="view-plan" class="view-section stack-md" aria-label="Workout Planner">
       <div class="card stack-sm">
         <div class="eyebrow">WEEKLY SPLIT BUILDER</div>
@@ -883,11 +882,8 @@
       </div>
     </section>
 
-    <!-- ===================================================================
-         SCREEN 3: ACTIVE WORKOUT MODE
-         =================================================================== -->
+    <!-- SCREEN 3: ACTIVE WORKOUT MODE -->
     <section id="view-workout" class="view-section stack-md" aria-label="Active Workout">
-      <!-- Idle / Pre-Workout View when no session is active -->
       <div id="workout-idle-state" class="card card-hero stack-md">
         <div class="eyebrow" id="wo-idle-day">TODAY'S SCHEDULE</div>
         <h1 class="h1" id="wo-idle-title">Ready to Train?</h1>
@@ -904,7 +900,6 @@
         </div>
       </div>
 
-      <!-- Active Session Interface -->
       <div id="workout-active-state" style="display:none;" class="stack-md">
         <div class="workout-sticky-bar stack-sm">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
@@ -926,7 +921,6 @@
             <div class="progress-fill" id="wo-sets-progress-bar" style="width:0%;"></div>
           </div>
 
-          <!-- Rest Timer & Pause/Resume Controls -->
           <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding-top:4px; border-top:1px solid var(--border-subtle);">
             <div style="display:flex; align-items:center; gap:6px;">
               <span class="small-muted">REST:</span>
@@ -938,15 +932,12 @@
           </div>
         </div>
 
-        <!-- Exercise Cards with Individual Set Rows -->
         <div id="wo-active-exercises-container" class="stack-md"></div>
 
-        <!-- Add Extra Exercise During Live Session -->
         <button type="button" class="btn btn-secondary btn-block" onclick="openExerciseModal(true)">
           + Add Extra Exercise to Session
         </button>
 
-        <!-- Finish or Discard Controls -->
         <div class="grid-2" style="margin-top:8px;">
           <button type="button" class="btn btn-danger" onclick="confirmDiscardWorkout()">
             Discard
@@ -958,9 +949,7 @@
       </div>
     </section>
 
-    <!-- ===================================================================
-         SCREEN 4: WORKOUT ANALYSIS & STREAK CALENDAR
-         =================================================================== -->
+    <!-- SCREEN 4: WORKOUT ANALYSIS & STREAK CALENDAR -->
     <section id="view-analysis" class="view-section stack-md" aria-label="Workout Analysis">
       <div class="card stack-sm">
         <div class="eyebrow">PERFORMANCE ANALYTICS</div>
@@ -992,7 +981,6 @@
         </div>
       </div>
 
-      <!-- Streak & Monthly Check-In Calendar -->
       <div class="card stack-sm">
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <div>
@@ -1025,7 +1013,6 @@
         </div>
       </div>
 
-      <!-- Exercise Progression Chart -->
       <div class="card stack-sm">
         <div class="eyebrow">STRENGTH PROGRESSION</div>
         <h2 class="h2">Weight & Rep Progression</h2>
@@ -1041,23 +1028,31 @@
         <div id="an-exercise-milestones" class="stack-sm"></div>
       </div>
 
-      <!-- Muscle Group Breakdown -->
       <div class="card stack-sm">
         <div class="eyebrow">MUSCLE DISTRIBUTION</div>
         <h2 class="h2">Muscle-Group Training History</h2>
         <div id="an-muscle-breakdown" class="stack-sm"></div>
       </div>
 
-      <!-- Full Workout History Button -->
       <button type="button" class="btn btn-outline-accent btn-block" onclick="openHistoryModal()">
         View Full Workout Session History
       </button>
     </section>
 
-    <!-- ===================================================================
-         SCREEN 5: PROFILE & SETTINGS
-         =================================================================== -->
+    <!-- SCREEN 5: PROFILE & SETTINGS -->
     <section id="view-profile" class="view-section stack-md" aria-label="Profile and Settings">
+      <div class="card card-hero stack-sm" id="cmyb-profile-pass-card">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+          <span class="chip chip-accent" id="cmyb-pass-status-chip">30-DAY FREE TRIAL</span>
+          <span class="small-muted" id="cmyb-pass-uid-label">ID: ----</span>
+        </div>
+        <div class="h2" id="cmyb-pass-days-label">30 Days Left</div>
+        <p class="muted">₹10 / month via UPI (<b>xryptamal@fam</b>) with your monthly unlock code on WhatsApp.</p>
+        <button type="button" class="btn btn-outline-accent btn-sm" onclick="window.cmybOpen && window.cmybOpen(false)">
+          Open ₹10 QR & Unlock Code
+        </button>
+      </div>
+
       <div class="card stack-md">
         <div class="eyebrow">ATHLETE PROFILE</div>
         <h1 class="h1">Profile & Preferences</h1>
@@ -1103,7 +1098,6 @@
         </button>
       </div>
 
-      <!-- Optional Body Measurements -->
       <div class="card stack-md">
         <div>
           <div class="eyebrow">OPTIONAL TRACKING</div>
@@ -1133,7 +1127,6 @@
         <div id="meas-history-list" class="stack-sm"></div>
       </div>
 
-      <!-- Backup, Restore & Reset -->
       <div class="card stack-sm">
         <div class="eyebrow">DATA MANAGEMENT</div>
         <h2 class="h2">Backup & Storage</h2>
@@ -1186,6 +1179,37 @@
   <!-- REUSABLE MODAL SHEET -->
   <div class="modal-backdrop" id="app-modal" role="dialog" aria-modal="true" onclick="if(event.target===this) closeModal()">
     <div class="modal-sheet stack-md" id="app-modal-content"></div>
+  </div>
+
+  <!-- ₹10 / MONTH SUBSCRIPTION & QR MODAL -->
+  <div class="cmyb-gate" id="cmyb-gate" role="dialog" aria-modal="true" aria-labelledby="cmyb-gate-title">
+    <div class="cmyb-gate-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+        <span class="chip chip-accent">₹10 / MONTH PASS</span>
+        <span id="cmyb-id" style="font-size:11px;color:#94A3B8;font-weight:700;"></span>
+        <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px;cursor:pointer;">✕</button>
+      </div>
+      <div>
+        <h2 class="h2" id="cmyb-gate-title">CALL ME YOUR BUDDY Pass</h2>
+        <p style="font-size:13px;color:#94A3B8;margin-top:4px;line-height:1.45;">
+          Pay <b>₹10</b> via UPI QR (<b>xryptamal@fam</b>), message Amaldev.A on WhatsApp with your ID, and enter this month's unlock code.
+        </p>
+      </div>
+      <div class="cmyb-qr">
+        <img id="cmyb-qr-img" alt="UPI ₹10 Payment QR Code" />
+        <span style="font-size:12px;font-weight:800;">xryptamal@fam • ₹10 / 30 Days</span>
+      </div>
+      <a id="cmyb-wa" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700;font-size:13px;">
+        Message Buddy on WhatsApp
+      </a>
+      <form onsubmit="cmybUnlock(event)" style="display:flex;flex-direction:column;gap:8px;">
+        <input id="cmyb-code" placeholder="Enter monthly code" autocomplete="off" required style="height:42px;padding:0 12px;border-radius:10px;background:#0E1015;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);font-size:14px;" />
+        <div id="cmyb-err" style="font-size:12px;color:#EF4444;display:none;"></div>
+        <button type="submit" id="cmyb-btn" style="height:44px;border:none;border-radius:12px;background:#FF5E1A;color:#0A0B0E;font-weight:800;cursor:pointer;font-size:14px;">
+          Unlock 30 Days
+        </button>
+      </form>
+    </div>
   </div>
 
   <!-- TOAST FEEDBACK -->
@@ -1269,14 +1293,14 @@
 
     function getStartOfWeekKey(dateObj = new Date()) {
       const dt = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
-      const day = dt.getDay(); // 0=Sun..6=Sat
+      const day = dt.getDay();
       const diffToMonday = day === 0 ? -6 : 1 - day;
       dt.setDate(dt.getDate() + diffToMonday);
       return getLocalDateKey(dt);
     }
 
     /* =========================================================================
-       3. INDEXEDDB STORAGE LAYER (WITH CLEAN DATA MODEL)
+       3. INDEXEDDB STORAGE LAYER
        ========================================================================= */
     const DB_NAME = "CallMeYourBuddyDB";
     const DB_VERSION = 1;
@@ -1352,13 +1376,13 @@
 
     let appState = {
       profile: { ...DEFAULT_PROFILE },
-      weeklyPlan: {}, // keyed by Monday..Sunday -> { day, isRest, title, exercises: [...] }
-      workouts: [],   // completed workout sessions (independent historical snapshots)
+      weeklyPlan: {},
+      workouts: [],
       measurements: [],
       selectedPlannerDay: ORDERED_WEEK_DAYS[(new Date().getDay() + 6) % 7],
       calendarYear: new Date().getFullYear(),
       calendarMonth: new Date().getMonth(),
-      activeSession: null // { sessionToken, dayLabel, splitTitle, startedAt, paused, pausedAccumMs, lastPauseStart, exercises: [...] }
+      activeSession: null
     };
 
     let elapsedInterval = null;
@@ -1382,7 +1406,6 @@
     async function loadAppState() {
       await openDatabase();
 
-      // Load profile from LocalStorage for instant theme/preference boot
       try {
         const savedProf = localStorage.getItem("cmyb_profile_v1");
         if (savedProf) {
@@ -1392,7 +1415,6 @@
 
       applyTheme(appState.profile.theme);
 
-      // Load weekly plans
       const plansArr = await dbGetAll("plans");
       const planMap = createEmptyWeeklyPlan();
       if (plansArr.length === 0) {
@@ -1408,17 +1430,14 @@
       }
       appState.weeklyPlan = planMap;
 
-      // Load workouts sorted newest first
       const workoutsArr = await dbGetAll("workouts");
       workoutsArr.sort((a, b) => b.completedAt - a.completedAt);
       appState.workouts = workoutsArr;
 
-      // Load measurements
       const measArr = await dbGetAll("measurements");
       measArr.sort((a, b) => b.timestamp - a.timestamp);
       appState.measurements = measArr;
 
-      // Restore interrupted active workout if any existed in LocalStorage
       try {
         const draftSession = localStorage.getItem("cmyb_active_session_v1");
         if (draftSession) {
@@ -1505,18 +1524,15 @@
        6. STREAK & CALENDAR CALCULATION ENGINE
        ========================================================================= */
     function calculateStreakMetrics() {
-      // Unique local dates with at least 1 completed workout
       const workoutDateSet = new Set(appState.workouts.map((w) => w.dateKey));
       const todayKey = getLocalDateKey(new Date());
 
-      // Helper: was a given dateKey a scheduled workout day (not rest and has >= 1 exercise)?
       function isScheduledWorkoutDate(dateKey) {
         const dayName = getDayNameFromDateKey(dateKey);
         const dayPlan = appState.weeklyPlan[dayName];
         return Boolean(dayPlan && !dayPlan.isRest && dayPlan.exercises && dayPlan.exercises.length > 0);
       }
 
-      // Compute Current Streak walking backward from today
       let currentStreak = 0;
       const cursor = new Date();
       for (let i = 0; i < 730; i++) {
@@ -1524,17 +1540,15 @@
         if (workoutDateSet.has(key)) {
           currentStreak++;
         } else if (key === todayKey) {
-          // Today isn't over yet: if not done yet, don't break streak from yesterday
+          // Today isn't over yet
         } else if (!isScheduledWorkoutDate(key)) {
-          // Rest day does NOT break streak (and doesn't inflate workout day count)
+          // Rest day does not break streak
         } else {
-          // Scheduled workout day in the past with no workout logged -> streak ends
           break;
         }
         cursor.setDate(cursor.getDate() - 1);
       }
 
-      // Compute Longest Streak across historical range from earliest workout to today
       let longestStreak = currentStreak;
       if (appState.workouts.length > 0) {
         const sortedKeys = [...workoutDateSet].sort();
@@ -1614,7 +1628,6 @@
         startBtn.onclick = () => startWorkoutFromDay(todayName);
       }
 
-      // Weekly completion stats
       const weekStartKey = getStartOfWeekKey(now);
       const weekStartDt = parseLocalDateKey(weekStartKey);
       let scheduledThisWeek = 0;
@@ -1635,7 +1648,6 @@
       document.getElementById("dash-weekly").textContent = `${completedDaysThisWeek} / ${Math.max(scheduledThisWeek, completedDaysThisWeek)}`;
       document.getElementById("dash-total").textContent = String(appState.workouts.length);
 
-      // Week strip
       const stripEl = document.getElementById("dash-week-strip");
       stripEl.innerHTML = ORDERED_WEEK_DAYS.map((dName, idx) => {
         const d = new Date(weekStartDt.getTime());
@@ -1656,7 +1668,6 @@
         `;
       }).join("");
 
-      // Recent History
       const histEl = document.getElementById("dash-recent-history");
       if (appState.workouts.length === 0) {
         histEl.innerHTML = `<p class="muted">No completed workouts yet. Finish your first workout to see it logged here.</p>`;
@@ -1684,7 +1695,7 @@
     }
 
     /* =========================================================================
-       8. CUSTOM WORKOUT PLANNER (MON–SUN + LIBRARY + REORDER)
+       8. CUSTOM WORKOUT PLANNER
        ========================================================================= */
     function renderPlanner() {
       const tabsEl = document.getElementById("planner-day-tabs");
@@ -1990,7 +2001,6 @@
       }
 
       const clonedExercises = (plan ? plan.exercises : []).map((ex) => {
-        // Pre-fill weight from user's most recent actual performance of this exercise if available
         const lastActualWeight = getLastLoggedWeightForExercise(ex.name);
         const startWeight = lastActualWeight !== null ? lastActualWeight : ex.weight;
         const setArray = [];
@@ -2081,7 +2091,6 @@
         return;
       }
 
-      // Active Session UI
       idleEl.style.display = "none";
       activeEl.style.display = "block";
       startElapsedTicker();
@@ -2278,7 +2287,6 @@
       renderWorkoutScreen();
     }
 
-    /* Rest Timer Logic */
     function updateRestTimerDisplay() {
       const el = document.getElementById("wo-rest-display");
       const btn = document.getElementById("wo-rest-toggle-btn");
@@ -2390,7 +2398,6 @@
 
       try {
         const sess = appState.activeSession;
-        // Prevent duplicate record with same sessionToken
         if (appState.workouts.some((w) => w.id === sess.sessionToken)) {
           closeModal();
           return;
@@ -2404,7 +2411,6 @@
         let totalReps = 0;
         let totalVolume = 0;
 
-        // Snapshot exercises & sets independently from future plan changes
         const recordedExercises = sess.exercises.map((ex) => {
           const setsCopy = ex.sets.map((s) => {
             const actReps = Number(s.actualReps) || 0;
@@ -2540,7 +2546,6 @@
       document.getElementById("an-total-sets").textContent = String(totalSets);
       document.getElementById("an-total-reps").textContent = String(totalReps);
 
-      // Week-over-week comparison (only when sufficient data across >= 2 weeks exists)
       const now = new Date();
       const thisWeekStart = parseLocalDateKey(getStartOfWeekKey(now));
       const lastWeekStart = new Date(thisWeekStart.getTime());
@@ -2569,13 +2574,11 @@
         compEl.innerHTML = `This week: <strong>${Math.round(thisWeekVol)} ${unit}</strong> (${thisWeekCount} sessions) vs Last week: <strong>${Math.round(lastWeekVol)} ${unit}</strong> (${lastWeekCount} sessions) — <span style="color:${diffPct >= 0 ? "var(--success)" : "var(--warning)"}; font-weight:800;">${sign}${diffPct}% volume</span>.`;
       }
 
-      // Streaks & Monthly Calendar
       const streakInfo = calculateStreakMetrics();
       document.getElementById("an-current-streak").textContent = `${streakInfo.currentStreak} Days`;
       document.getElementById("an-longest-streak").textContent = `${streakInfo.longestStreak} Days`;
       renderMonthlyCalendar(streakInfo.workoutDateSet);
 
-      // Muscle Group Breakdown
       const muscleMap = {};
       appState.workouts.forEach((w) => {
         w.exercises.forEach((ex) => {
@@ -2612,7 +2615,6 @@
         }).join("");
       }
 
-      // Populate Exercise Dropdown for Progression Chart
       const exerciseNames = new Set();
       appState.workouts.forEach((w) => {
         w.exercises.forEach((ex) => {
@@ -2658,7 +2660,7 @@
       });
 
       const todayKey = getLocalDateKey(new Date());
-      const startWeekday = (firstOfMonth.getDay() + 6) % 7; // Mon=0..Sun=6
+      const startWeekday = (firstOfMonth.getDay() + 6) % 7;
       const daysInMonth = new Date(year, month + 1, 0).getDate();
 
       let cellsHtml = ["M", "T", "W", "T", "F", "S", "S"].map((h) => `<div class="cal-head">${h}</div>`).join("");
@@ -2703,7 +2705,6 @@
         return;
       }
 
-      // Chronological points from completed sessions
       const points = [];
       [...appState.workouts].reverse().forEach((w) => {
         const match = w.exercises.find((e) => e.name === exName);
@@ -2723,7 +2724,6 @@
       const bestRepsSession = Math.max(...points.map((p) => p.totalReps));
       const latest = points[points.length - 1];
 
-      // Build clean SVG line + bar chart
       const w = 320;
       const h = 130;
       const padX = 24;
@@ -2775,45 +2775,34 @@
     }
 
     /* =========================================================================
-       12. PROFILE, BODY MEASUREMENTS & BACKUP/IMPORT/RESET
+       12. PROFILE, PASS CARD, MEASUREMENTS & BACKUP/IMPORT/RESET
        ========================================================================= */
     function ensureProfilePassButton() {
-  const profView = document.getElementById("view-profile");
-  if (!profView) return;
+      const statusChip = document.getElementById("cmyb-pass-status-chip");
+      const uidLabel = document.getElementById("cmyb-pass-uid-label");
+      const daysLabel = document.getElementById("cmyb-pass-days-label");
+      if (!statusChip || !uidLabel || !daysLabel) return;
 
-  let card = document.getElementById("cmyb-profile-pass-card");
-  if (!card) {
-    card = document.createElement("div");
-    card.id = "cmyb-profile-pass-card";
-    card.className = "card card-hero stack-sm";
-    profView.insertBefore(card, profView.firstChild);
-  }
+      const now = Date.now();
+      const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+      const start = Number(localStorage.getItem("cmyb_t0") || now);
+      const until = Number(localStorage.getItem("cmyb_until") || 0);
+      const activeEnd = Math.max(now < start + thirtyDays ? start + thirtyDays : 0, now < until ? until : 0);
+      const daysLeft = Math.max(0, Math.ceil((activeEnd - now) / 86400000));
+      const id = localStorage.getItem("cmyb_uid") || "CMYB-PENDING";
 
-  const now = Date.now();
-  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
-  const start = Number(localStorage.getItem("cmyb_t0") || now);
-  const until = Number(localStorage.getItem("cmyb_until") || 0);
-  const activeEnd = Math.max(now < start + thirtyDays ? start + thirtyDays : 0, now < until ? until : 0);
-  const daysLeft = Math.max(0, Math.ceil((activeEnd - now) / 86400000));
-  const id = localStorage.getItem("cmyb_uid") || "CMYB-ACTIVE";
+      statusChip.textContent = now < until
+        ? "MONTHLY PASS ACTIVE"
+        : (daysLeft > 0 ? "30-DAY FREE TRIAL" : "PASS EXPIRED");
+      uidLabel.textContent = `ID: ${id}`;
+      daysLabel.textContent = daysLeft > 0
+        ? `${daysLeft} Day${daysLeft === 1 ? "" : "s"} Left`
+        : "₹10 Monthly Pass Needed";
+    }
 
-  const statusLabel = now < until
-    ? "MONTHLY PASS ACTIVE"
-    : (daysLeft > 0 ? "30-DAY FREE TRIAL" : "PASS EXPIRED");
+    function renderProfile() {
+      ensureProfilePassButton();
 
-  card.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-      <span class="chip chip-accent">${statusLabel}</span>
-      <span class="small-muted">${escapeHtml(id)}</span>
-    </div>
-    <div class="h2">${daysLeft > 0 ? `${daysLeft} Day${daysLeft === 1 ? "" : "s"} Left` : "₹10 Monthly Pass Needed"}</div>
-    <p class="muted">₹10 / month via UPI (<b>xryptamal@fam</b>) with your monthly unlock code on WhatsApp.</p>
-    <button type="button" class="btn btn-outline-accent btn-sm" onclick="window.cmybOpen && window.cmybOpen(false)">
-      Open ₹10 QR & Unlock Code
-    </button>
-  `;
-}
-function renderProfile() {
       document.getElementById("prof-name").value = appState.profile.name || "";
       document.getElementById("prof-unit").value = appState.profile.unit || "kg";
       document.getElementById("prof-rest-sec").value = appState.profile.defaultRestSec || 90;
@@ -2987,139 +2976,124 @@ function renderProfile() {
     }
 
     /* =========================================================================
-       13. BOOTSTRAP APPLICATION
+       13. SUBSCRIPTION GATE (30-DAY FREE TRIAL + ₹10 WORKER UNLOCK)
+       ========================================================================= */
+    const WORKER = "https://buddy-gym-unlock.amalpc250.workers.dev";
+    const WA = "919746761731";
+    const UPI = "xryptamal@fam";
+    const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+    let hardLock = false;
+
+    function buddyId() {
+      let id = localStorage.getItem("cmyb_uid");
+      if (!id) {
+        id = "CMYB-" + Math.random().toString(36).slice(2, 6).toUpperCase() + "-" + Date.now().toString(36).slice(-4).toUpperCase();
+        localStorage.setItem("cmyb_uid", id);
+      }
+      return id;
+    }
+
+    window.cmybOpen = function (forceLock) {
+      hardLock = Boolean(forceLock);
+      const id = buddyId();
+      document.getElementById("cmyb-id").textContent = id;
+      document.getElementById("cmyb-gate-title").textContent = hardLock
+        ? "Renew Monthly Pass — ₹10"
+        : "CALL ME YOUR BUDDY Pass";
+      document.getElementById("cmyb-close").style.display = hardLock ? "none" : "inline-block";
+      const upiUri = `upi://pay?pa=${encodeURIComponent(UPI)}&pn=Amaldev.A&am=10&cu=INR&tn=${encodeURIComponent("CALL ME YOUR BUDDY " + id)}`;
+      document.getElementById("cmyb-qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=${encodeURIComponent(upiUri)}`;
+      document.getElementById("cmyb-wa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hi Buddy! I paid Rs 10 for CALL ME YOUR BUDDY. ID: " + id)}`;
+      document.getElementById("cmyb-err").style.display = "none";
+      document.getElementById("cmyb-gate").classList.add("open");
+    };
+
+    window.cmybClose = function () {
+      if (hardLock) {
+        showToast("Enter this month's ₹10 unlock code to continue");
+        return;
+      }
+      document.getElementById("cmyb-gate").classList.remove("open");
+    };
+
+    window.cmybUnlock = async function (e) {
+      e.preventDefault();
+      const inp = document.getElementById("cmyb-code");
+      const err = document.getElementById("cmyb-err");
+      const btn = document.getElementById("cmyb-btn");
+      const code = inp.value.trim();
+      if (!code) return;
+
+      err.style.display = "none";
+      btn.disabled = true;
+      btn.textContent = "Verifying...";
+
+      try {
+        const res = await fetch(WORKER, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code, buddyId: buddyId() })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.valid || !data.unlockedUntil) {
+          throw new Error(data.error || "Invalid code");
+        }
+        localStorage.setItem("cmyb_until", String(Number(data.unlockedUntil)));
+        inp.value = "";
+        hardLock = false;
+        cmybClose();
+        ensureProfilePassButton();
+        showToast("Unlocked for 30 days!");
+      } catch (ex) {
+        err.textContent = ex.message || "Could not verify code.";
+        err.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Unlock 30 Days";
+      }
+    };
+
+    /* =========================================================================
+       14. SINGLE BOOTSTRAP ENTRYPOINT
        ========================================================================= */
     window.addEventListener("DOMContentLoaded", async () => {
+      buddyId();
+      ensureProfilePassButton();
+
       try {
         await loadAppState();
         renderDashboard();
         renderPlanner();
         renderWorkoutScreen();
+        ensureProfilePassButton();
       } catch (err) {
         console.error("Initialization error:", err);
         showToast("Storage initialization issue");
       }
+
+      let now = Date.now();
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 3500);
+        const r = await fetch(WORKER, { method: "GET", signal: ctrl.signal });
+        clearTimeout(timer);
+        if (r.ok) {
+          const j = await r.json();
+          if (j && j.serverNowMs) now = Math.max(now, Number(j.serverNowMs));
+        }
+      } catch (e) {}
+
+      let start = Number(localStorage.getItem("cmyb_t0"));
+      if (!start || isNaN(start)) {
+        start = now;
+        localStorage.setItem("cmyb_t0", String(start));
+      }
+      const until = Number(localStorage.getItem("cmyb_until") || 0);
+      ensureProfilePassButton();
+      if (!(now < start + THIRTY_DAYS || now < until)) {
+        window.cmybOpen(true);
+      }
     });
   </script>
-
-<div class="cmyb-gate" id="cmyb-gate">
-  <div class="cmyb-gate-box">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <strong>&#8377;10 / MONTH PASS</strong>
-      <span id="cmyb-id" style="font-size:11px;color:#94A3B8"></span>
-      <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px">X</button>
-    </div>
-    <p style="font-size:13px;color:#94A3B8">
-      Pay <b>&#8377;10</b> via UPI QR (<b>xryptamal@fam</b>), message Amaldev.A on WhatsApp with your ID, and enter this month's unlock code.
-    </p>
-    <div class="cmyb-qr">
-      <img id="cmyb-qr-img" alt="UPI QR Code" />
-      <span style="font-size:12px;font-weight:700">xryptamal@fam</span>
-    </div>
-    <a id="cmyb-wa" target="_blank" rel="noopener" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#F8FAFC;text-decoration:none;font-weight:700">
-      Message Buddy on WhatsApp
-    </a>
-    <form onsubmit="cmybUnlock(event)" style="display:flex;flex-direction:column;gap:8px">
-      <input id="cmyb-code" placeholder="Enter monthly code" required style="height:42px;padding:0 12px;border-radius:10px;background:#0E1015;color:#F8FAFC;border:1px solid rgba(255,255,255,.15)" />
-      <div id="cmyb-err" style="font-size:12px;color:#EF4444;display:none"></div>
-      <button type="submit" id="cmyb-btn" style="height:44px;border:none;border-radius:12px;background:#FF5E1A;color:#0A0B0E;font-weight:800;cursor:pointer">
-        Unlock 30 Days
-      </button>
-    </form>
-  </div>
-</div>
-
-<script>
-(function () {
-  const WORKER = "https://buddy-gym-unlock.amalpc250.workers.dev";
-  const WA = "919746761731";
-  const UPI = "xryptamal@fam";
-  const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-  let hardLock = false;
-
-  function buddyId() {
-    let id = localStorage.getItem("cmyb_uid");
-    if (!id) {
-      id = "CMYB-" + Math.random().toString(36).slice(2, 6).toUpperCase() + "-" + Date.now().toString(36).slice(-4).toUpperCase();
-      localStorage.setItem("cmyb_uid", id);
-    }
-    return id;
-  }
-
-  window.cmybOpen = function (forceLock) {
-    hardLock = Boolean(forceLock);
-    const id = buddyId();
-    document.getElementById("cmyb-id").textContent = id;
-    document.getElementById("cmyb-close").style.display = hardLock ? "none" : "inline-block";
-    const upiUri = `upi://pay?pa=${encodeURIComponent(UPI)}&pn=Amaldev.A&am=10&cu=INR&tn=${encodeURIComponent("CALL ME YOUR BUDDY " + id)}`;
-    document.getElementById("cmyb-qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=6&data=${encodeURIComponent(upiUri)}`;
-    document.getElementById("cmyb-wa").href = `https://wa.me/${WA}?text=${encodeURIComponent("Hi Buddy! I paid Rs 10 for CALL ME YOUR BUDDY. ID: " + id)}`;
-    document.getElementById("cmyb-gate").classList.add("open");
-  };
-
-  window.cmybClose = function () {
-    if (!hardLock) {
-      document.getElementById("cmyb-gate").classList.remove("open");
-    }
-  };
-
-  window.cmybUnlock = async function (e) {
-    e.preventDefault();
-    const inp = document.getElementById("cmyb-code");
-    const err = document.getElementById("cmyb-err");
-    const btn = document.getElementById("cmyb-btn");
-    const code = inp.value.trim();
-    if (!code) return;
-
-    err.style.display = "none";
-    btn.disabled = true;
-    btn.textContent = "Verifying...";
-
-    try {
-      const res = await fetch(WORKER, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code, buddyId: buddyId() })
-      });
-      const data = await res.json();
-      if (!res.ok || !data.valid || !data.unlockedUntil) {
-        throw new Error(data.error || "Invalid code");
-      }
-      localStorage.setItem("cmyb_until", String(data.unlockedUntil));
-      inp.value = "";
-      hardLock = false;
-      cmybClose();
-      alert("Unlocked for 30 days!");
-    } catch (ex) {
-      err.textContent = ex.message || "Could not verify code.";
-      err.style.display = "block";
-    } finally {
-      btn.disabled = false;
-      btn.textContent = "Unlock 30 Days";
-    }
-  };
-
-  window.addEventListener("DOMContentLoaded", async () => {
-    let now = Date.now();
-    try {
-      const r = await fetch(WORKER);
-      if (r.ok) {
-        const j = await r.json();
-        if (j.serverNowMs) now = Math.max(now, Number(j.serverNowMs));
-      }
-    } catch (e) {}
-
-    let start = Number(localStorage.getItem("cmyb_t0"));
-    if (!start) {
-      start = now;
-      localStorage.setItem("cmyb_t0", String(start));
-    }
-    const until = Number(localStorage.getItem("cmyb_until") || 0);
-    if (!(now < start + THIRTY_DAYS || now < until)) {
-      cmybOpen(true);
-    }
-  });
-})();
-</script>
 </body>
 </html>
