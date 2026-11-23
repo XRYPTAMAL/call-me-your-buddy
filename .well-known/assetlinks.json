@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.xryptamal.twa",
+        "sha256_cert_fingerprints": ["F3:94:BD:54:6F:9B:7C:F2:AF:6C:86:FA:66:C6:4A:11:70:2F:8C:7F:88:79:C1:F7:14:5A:41:71:65:B4:76:B1"]
+      }
+    }]
