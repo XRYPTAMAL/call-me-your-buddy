@@ -1,4 +1,4 @@
-const CACHE_NAME = "cmyb-pwa-v3";
+const CACHE_NAME = "cmyb-pwa-v4";
 const ASSETS = [
   "/call-me-your-buddy/",
   "/call-me-your-buddy/index.html",
