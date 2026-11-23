@@ -775,6 +775,8 @@
       display: block;
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff6b00">
 </head>
 <body>
 
@@ -3095,5 +3097,7 @@
       }
     });
   </script>
+<script src="pwa.js"></script>
+<script>document.addEventListener("click",e=>{const t=(e.target.innerText||"").toLowerCase();if(!window.BuddyLive)return;if(t.includes("start workout")||t.includes("begin workout"))BuddyLive.startWorkout();else if(t.includes("rest")){const m=t.match(/(\d+)/);BuddyLive.startRest(m?Number(m[1]):60);}else if(t.includes("finish workout")||t.includes("end workout"))BuddyLive.stopAll();});</script>
 </body>
 </html>
