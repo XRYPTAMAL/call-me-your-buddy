@@ -1996,6 +1996,7 @@
         navigateTo("workout");
         return;
       }
+      if (window.BuddyLive) window.BuddyLive.startWorkout();
       const plan = appState.weeklyPlan[dayName];
       if ((!plan || plan.isRest || plan.exercises.length === 0) && !allowEmpty) {
         showToast("No exercises scheduled today");
@@ -2303,6 +2304,7 @@
       if (restRunning) {
         clearInterval(restInterval);
         restRunning = false;
+        if (window.BuddyLive) window.BuddyLive.clearRest();
         updateRestTimerDisplay();
         return;
       }
@@ -2311,6 +2313,7 @@
       }
       restRunning = true;
       updateRestTimerDisplay();
+      if (window.BuddyLive) window.BuddyLive.startRest(restRemainingSec);
       restInterval = setInterval(() => {
         restRemainingSec--;
         updateRestTimerDisplay();
@@ -2324,6 +2327,7 @@
     }
 
     function resetRestTimer(autoStart = false) {
+      if (window.BuddyLive) window.BuddyLive.clearRest();
       clearInterval(restInterval);
       restRunning = false;
       restRemainingSec = Number(appState.profile.defaultRestSec) || 90;
@@ -2334,6 +2338,7 @@
     }
 
     function notifyRestComplete() {
+      if (window.BuddyLive) window.BuddyLive.clearRest();
       showToast("Rest complete! Next set.");
       if (appState.profile.sound === "on") {
         if (navigator.vibrate) navigator.vibrate([180, 100, 180]);
@@ -2361,6 +2366,7 @@
     }
 
     function discardWorkoutNow() {
+      if (window.BuddyLive) window.BuddyLive.stopAll();
       appState.activeSession = null;
       persistActiveSessionDraft();
       clearInterval(restInterval);
@@ -2395,6 +2401,7 @@
 
     let isSavingWorkout = false;
     async function finishWorkoutNow() {
+      if (window.BuddyLive) window.BuddyLive.stopAll();
       if (isSavingWorkout || !appState.activeSession) return;
       isSavingWorkout = true;
 
@@ -3098,6 +3105,5 @@
     });
   </script>
 <script src="pwa.js"></script>
-<script>document.addEventListener("click",e=>{const t=(e.target.innerText||"").toLowerCase();if(!window.BuddyLive)return;if(t.includes("start workout")||t.includes("begin workout"))BuddyLive.startWorkout();else if(t.includes("rest")){const m=t.match(/(\d+)/);BuddyLive.startRest(m?Number(m[1]):60);}else if(t.includes("finish workout")||t.includes("end workout"))BuddyLive.stopAll();});</script>
 </body>
 </html>
