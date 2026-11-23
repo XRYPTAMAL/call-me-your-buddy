@@ -647,7 +647,7 @@
     }
 
     /* =========================================================================
-       7. MODAL DIALOG, TOAST & â‚¹10 SUBSCRIPTION GATE
+       7. MODAL DIALOG, TOAST & ₹10 SUBSCRIPTION GATE
        ========================================================================= */
     .modal-backdrop {
       position: fixed;
@@ -814,7 +814,7 @@
         <div id="dash-today-preview" class="stack-sm" style="margin-top: 8px;"></div>
         <div style="margin-top: 10px;">
           <button type="button" class="btn btn-primary btn-block" id="dash-start-btn" onclick="startTodayWorkout()">
-            â–¶ START WORKOUT
+            ▶ START WORKOUT
           </button>
         </div>
       </div>
@@ -856,7 +856,7 @@
       <div class="card stack-sm">
         <div class="eyebrow">WEEKLY SPLIT BUILDER</div>
         <h1 class="h1">Custom Workout Plan</h1>
-        <p class="muted">Assign workouts or rest days for Mondayâ€“Sunday. Editing your plan never alters past workout history.</p>
+        <p class="muted">Assign workouts or rest days for Monday–Sunday. Editing your plan never alters past workout history.</p>
         <div class="day-selector" id="planner-day-tabs" role="tablist"></div>
       </div>
 
@@ -898,7 +898,7 @@
         <div id="wo-idle-exercises" class="stack-sm"></div>
         <div class="stack-sm" style="margin-top:8px;">
           <button type="button" class="btn btn-primary btn-block" id="wo-idle-start-btn" onclick="startTodayWorkout()">
-            â–¶ START SCHEDULED WORKOUT
+            ▶ START SCHEDULED WORKOUT
           </button>
           <button type="button" class="btn btn-secondary btn-block" onclick="openCustomSessionPicker()">
             Choose Another Day's Split
@@ -949,7 +949,7 @@
             Discard
           </button>
           <button type="button" class="btn btn-success" onclick="confirmFinishWorkout()">
-            âœ“ FINISH WORKOUT
+            ✓ FINISH WORKOUT
           </button>
         </div>
       </div>
@@ -994,8 +994,8 @@
             <h2 class="h2" id="cal-month-title">Month</h2>
           </div>
           <div style="display:flex; gap:6px;">
-            <button type="button" class="btn btn-secondary btn-icon" onclick="shiftCalendarMonth(-1)" aria-label="Previous Month">â€¹</button>
-            <button type="button" class="btn btn-secondary btn-icon" onclick="shiftCalendarMonth(1)" aria-label="Next Month">â€º</button>
+            <button type="button" class="btn btn-secondary btn-icon" onclick="shiftCalendarMonth(-1)" aria-label="Previous Month">‹</button>
+            <button type="button" class="btn btn-secondary btn-icon" onclick="shiftCalendarMonth(1)" aria-label="Next Month">›</button>
           </div>
         </div>
 
@@ -1053,9 +1053,9 @@
           <span class="small-muted" id="cmyb-pass-uid-label">ID: ----</span>
         </div>
         <div class="h2" id="cmyb-pass-days-label">30 Days Left</div>
-        <p class="muted">â‚¹10 / month via UPI (<b>xryptamal@fam</b>) with your monthly unlock code on WhatsApp.</p>
+        <p class="muted">₹10 / month via UPI (<b>xryptamal@fam</b>) with your monthly unlock code on WhatsApp.</p>
         <button type="button" class="btn btn-outline-accent btn-sm" onclick="window.cmybOpen && window.cmybOpen(false)">
-          Open â‚¹10 QR & Unlock Code
+          Open ₹10 QR & Unlock Code
         </button>
       </div>
 
@@ -1187,23 +1187,23 @@
     <div class="modal-sheet stack-md" id="app-modal-content"></div>
   </div>
 
-  <!-- â‚¹10 / MONTH SUBSCRIPTION & QR MODAL -->
+  <!-- ₹10 / MONTH SUBSCRIPTION & QR MODAL -->
   <div class="cmyb-gate" id="cmyb-gate" role="dialog" aria-modal="true" aria-labelledby="cmyb-gate-title">
     <div class="cmyb-gate-box">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
-        <span class="chip chip-accent">â‚¹10 / MONTH PASS</span>
+        <span class="chip chip-accent">₹10 / MONTH PASS</span>
         <span id="cmyb-id" style="font-size:11px;color:#94A3B8;font-weight:700;"></span>
-        <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px;cursor:pointer;">âœ•</button>
+        <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px;cursor:pointer;">✕</button>
       </div>
       <div>
         <h2 class="h2" id="cmyb-gate-title">CALL ME YOUR BUDDY Pass</h2>
         <p style="font-size:13px;color:#94A3B8;margin-top:4px;line-height:1.45;">
-          Pay <b>â‚¹10</b> via UPI QR (<b>xryptamal@fam</b>), message Amaldev.A on WhatsApp with your ID, and enter this month's unlock code.
+          Pay <b>₹10</b> via UPI QR (<b>xryptamal@fam</b>), message Amaldev.A on WhatsApp with your ID, and enter this month's unlock code.
         </p>
       </div>
       <div class="cmyb-qr">
-        <img id="cmyb-qr-img" alt="UPI â‚¹10 Payment QR Code" />
-        <span style="font-size:12px;font-weight:800;">xryptamal@fam • â‚¹10 / 30 Days</span>
+        <img id="cmyb-qr-img" alt="UPI ₹10 Payment QR Code" />
+        <span style="font-size:12px;font-weight:800;">xryptamal@fam • ₹10 / 30 Days</span>
       </div>
       <a id="cmyb-wa" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700;font-size:13px;">
         Message Buddy on WhatsApp
@@ -1609,7 +1609,7 @@
         document.getElementById("dash-today-title").textContent = `In Progress: ${appState.activeSession.splitTitle}`;
         musclesEl.innerHTML = `<span class="chip chip-accent">Active Session Paused/Running</span>`;
         previewEl.innerHTML = `<p class="muted">You have an active workout in progress. Tap below to resume logging sets.</p>`;
-        startBtn.textContent = "â–¶ RESUME ACTIVE WORKOUT";
+        startBtn.textContent = "▶ RESUME ACTIVE WORKOUT";
         startBtn.onclick = () => navigateTo("workout");
       } else if (!isScheduled) {
         document.getElementById("dash-today-title").textContent = "Rest & Recovery Day";
@@ -1621,16 +1621,16 @@
         document.getElementById("dash-today-title").textContent = dayPlan.title || `${todayName} Workout`;
         const uniqueMuscles = [...new Set(dayPlan.exercises.map((e) => e.muscle))];
         musclesEl.innerHTML = uniqueMuscles.map((m) => `<span class="chip chip-accent">${escapeHtml(m)}</span>`).join("")
-          + (doneTodayCount > 0 ? `<span class="chip chip-success">âœ“ Completed Today (${doneTodayCount})</span>` : "");
+          + (doneTodayCount > 0 ? `<span class="chip chip-success">✓ Completed Today (${doneTodayCount})</span>` : "");
 
         previewEl.innerHTML = dayPlan.exercises.slice(0, 4).map((ex) => `
           <div style="display:flex; justify-content:space-between; font-size:12px; padding:6px 10px; border-radius:10px; background:rgba(255,255,255,0.03);">
             <span style="font-weight:700;">${escapeHtml(ex.name)}</span>
-            <span class="small-muted">${ex.sets} Ã— ${ex.reps} @ ${ex.weight}${appState.profile.unit}</span>
+            <span class="small-muted">${ex.sets} × ${ex.reps} @ ${ex.weight}${appState.profile.unit}</span>
           </div>
         `).join("") + (dayPlan.exercises.length > 4 ? `<div class="small-muted">+ ${dayPlan.exercises.length - 4} more exercises</div>` : "");
 
-        startBtn.textContent = doneTodayCount > 0 ? "â–¶ LOG ANOTHER SESSION" : "â–¶ START WORKOUT";
+        startBtn.textContent = doneTodayCount > 0 ? "▶ LOG ANOTHER SESSION" : "▶ START WORKOUT";
         startBtn.onclick = () => startWorkoutFromDay(todayName);
       }
 
@@ -1669,7 +1669,7 @@
               <span style="font-size:12px; font-weight:800; width:34px; color:${isToday ? "var(--accent)" : "var(--text-secondary)"};">${dName.slice(0, 3)}</span>
               <span style="font-size:13px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(label)}</span>
             </div>
-            <span class="chip ${done ? "chip-success" : ""}">${done ? "âœ“ Done" : (p.isRest || p.exercises.length === 0 ? "Rest" : "Planned")}</span>
+            <span class="chip ${done ? "chip-success" : ""}">${done ? "✓ Done" : (p.isRest || p.exercises.length === 0 ? "Rest" : "Planned")}</span>
           </div>
         `;
       }).join("");
@@ -1695,7 +1695,7 @@
               ${muscles.map((m) => `<span class="chip">${escapeHtml(m)}</span>`).join("")}
             </div>
           </div>
-          <span style="color:var(--accent); font-weight:800; font-size:16px;">â€º</span>
+          <span style="color:var(--accent); font-weight:800; font-size:16px;">›</span>
         </div>
       `;
     }
@@ -1750,14 +1750,14 @@
               <div style="min-width:0; flex:1;">
                 <div class="h3">${escapeHtml(ex.name)}</div>
                 <div class="small-muted" style="margin-top:3px;">
-                  <span style="color:var(--accent);">${escapeHtml(ex.muscle)}</span> • ${ex.sets} sets Ã— ${ex.reps} reps • ${ex.weight} ${unit}
+                  <span style="color:var(--accent);">${escapeHtml(ex.muscle)}</span> • ${ex.sets} sets × ${ex.reps} reps • ${ex.weight} ${unit}
                 </div>
               </div>
               <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
-                <button type="button" class="btn btn-secondary btn-icon" onclick="movePlannedExercise(${idx}, -1)" ${idx === 0 ? "disabled style='opacity:0.35'" : ""} title="Move Up">â†‘</button>
-                <button type="button" class="btn btn-secondary btn-icon" onclick="movePlannedExercise(${idx}, 1)" ${idx === dayPlan.exercises.length - 1 ? "disabled style='opacity:0.35'" : ""} title="Move Down">â†“</button>
-                <button type="button" class="btn btn-secondary btn-icon" onclick="openExerciseModal(false, ${idx})" title="Edit">âœŽ</button>
-                <button type="button" class="btn btn-danger btn-icon" onclick="deletePlannedExercise(${idx})" title="Delete">âœ•</button>
+                <button type="button" class="btn btn-secondary btn-icon" onclick="movePlannedExercise(${idx}, -1)" ${idx === 0 ? "disabled style='opacity:0.35'" : ""} title="Move Up">↑</button>
+                <button type="button" class="btn btn-secondary btn-icon" onclick="movePlannedExercise(${idx}, 1)" ${idx === dayPlan.exercises.length - 1 ? "disabled style='opacity:0.35'" : ""} title="Move Down">↓</button>
+                <button type="button" class="btn btn-secondary btn-icon" onclick="openExerciseModal(false, ${idx})" title="Edit">✎</button>
+                <button type="button" class="btn btn-danger btn-icon" onclick="deletePlannedExercise(${idx})" title="Delete">✕</button>
               </div>
             </div>
           `).join("");
@@ -1827,7 +1827,7 @@
       openModal(`
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <h2 class="h2">${editIndex !== null ? "Edit Exercise" : "Add Exercise"}</h2>
-          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">âœ•</button>
+          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">✕</button>
         </div>
 
         ${editIndex === null ? `
@@ -1989,7 +1989,7 @@
       openModal(`
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <h2 class="h2">Choose Workout Split</h2>
-          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">âœ•</button>
+          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">✕</button>
         </div>
         <div class="stack-sm">${cards}</div>
       `);
@@ -2089,7 +2089,7 @@
             <div class="exercise-item">
               <div>
                 <div class="h3">${escapeHtml(ex.name)}</div>
-                <div class="small-muted">${escapeHtml(ex.muscle)} • ${ex.sets} sets Ã— ${ex.reps} reps • ${ex.weight}${appState.profile.unit}</div>
+                <div class="small-muted">${escapeHtml(ex.muscle)} • ${ex.sets} sets × ${ex.reps} reps • ${ex.weight}${appState.profile.unit}</div>
               </div>
             </div>
           `).join("");
@@ -2155,7 +2155,7 @@
               aria-label="Toggle set ${s.setNumber} complete"
               onclick="toggleSetCompleted(${exIdx}, ${setIdx})"
             >
-              âœ“
+              ✓
             </button>
           </div>
         `).join("");
@@ -2486,7 +2486,7 @@
         openModal(`
           <div style="display:flex; align-items:center; justify-content:space-between;">
             <h2 class="h2">Workout History</h2>
-            <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">âœ•</button>
+            <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">✕</button>
           </div>
           <p class="muted">No completed workouts recorded yet.</p>
         `);
@@ -2497,7 +2497,7 @@
       openModal(`
         <div style="display:flex; align-items:center; justify-content:space-between;">
           <h2 class="h2">All Completed Workouts (${appState.workouts.length})</h2>
-          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">âœ•</button>
+          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">✕</button>
         </div>
         <div class="stack-sm">${listHtml}</div>
       `);
@@ -2512,8 +2512,8 @@
       const exHtml = w.exercises.map((ex) => {
         const setsHtml = ex.sets.map((s) => `
           <div style="display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid var(--border-subtle);">
-            <span>Set ${s.setNumber} ${s.completed ? "âœ“" : "(Skipped)"}</span>
-            <span><strong>${s.actualWeight} ${unit} Ã— ${s.actualReps} reps</strong> <span class="small-muted">(Plan: ${s.plannedWeight}${unit} Ã— ${s.plannedReps})</span></span>
+            <span>Set ${s.setNumber} ${s.completed ? "✓" : "(Skipped)"}</span>
+            <span><strong>${s.actualWeight} ${unit} × ${s.actualReps} reps</strong> <span class="small-muted">(Plan: ${s.plannedWeight}${unit} × ${s.plannedReps})</span></span>
           </div>
         `).join("");
         return `
@@ -2533,7 +2533,7 @@
             <div class="eyebrow">${formatDisplayDate(w.dateKey)}</div>
             <h2 class="h2">${escapeHtml(w.splitTitle)}</h2>
           </div>
-          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">âœ•</button>
+          <button type="button" class="btn btn-secondary btn-icon" onclick="closeModal()">✕</button>
         </div>
         <div class="grid-3">
           <div class="stat-tile"><div class="small-muted">DURATION</div><div class="h3">${mins} min</div></div>
@@ -2810,7 +2810,7 @@
       uidLabel.textContent = `ID: ${id}`;
       daysLabel.textContent = daysLeft > 0
         ? `${daysLeft} Day${daysLeft === 1 ? "" : "s"} Left`
-        : "â‚¹10 Monthly Pass Needed";
+        : "₹10 Monthly Pass Needed";
     }
 
     function renderProfile() {
@@ -2989,7 +2989,7 @@
     }
 
     /* =========================================================================
-       13. SUBSCRIPTION GATE (30-DAY FREE TRIAL + â‚¹10 WORKER UNLOCK)
+       13. SUBSCRIPTION GATE (30-DAY FREE TRIAL + ₹10 WORKER UNLOCK)
        ========================================================================= */
     const WORKER = "https://buddy-gym-unlock.amalpc250.workers.dev";
     const WA = "919746761731";
@@ -3011,7 +3011,7 @@
       const id = buddyId();
       document.getElementById("cmyb-id").textContent = id;
       document.getElementById("cmyb-gate-title").textContent = hardLock
-        ? "Renew Monthly Pass — â‚¹10"
+        ? "Renew Monthly Pass — ₹10"
         : "CALL ME YOUR BUDDY Pass";
       document.getElementById("cmyb-close").style.display = hardLock ? "none" : "inline-block";
       const upiUri = `upi://pay?pa=${encodeURIComponent(UPI)}&pn=Amaldev.A&am=10&cu=INR&tn=${encodeURIComponent("CALL ME YOUR BUDDY " + id)}`;
@@ -3023,7 +3023,7 @@
 
     window.cmybClose = function () {
       if (hardLock) {
-        showToast("Enter this month's â‚¹10 unlock code to continue");
+        showToast("Enter this month's ₹10 unlock code to continue");
         return;
       }
       document.getElementById("cmyb-gate").classList.remove("open");
@@ -3110,7 +3110,7 @@
   </script>
 <script src="pwa.js"></script>
 
-<div id="pwa-install-banner" style="display:flex;position:fixed;bottom:76px;left:12px;right:12px;z-index:9999;background:#16181d;border:1px solid #1db954;border-radius:14px;padding:12px 14px;box-shadow:0 10px 25px rgba(0,0,0,.6);align-items:center;justify-content:space-between;gap:10px;font-family:system-ui,sans-serif"><div style="display:flex;align-items:center;gap:10px"><div style="width:38px;height:38px;border-radius:9px;background:#1db954;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px">CB</div><div><div style="color:#fff;font-weight:700;font-size:14px">Install Buddy Gym App</div><div id="pwa-install-sub" style="color:#9ca3af;font-size:12px">Tap Install for full-screen &amp; offline mode</div></div></div><div style="display:flex;align-items:center;gap:6px"><button id="pwa-install-btn" style="background:#1db954;color:#fff;border:none;border-radius:9px;padding:8px 12px;font-weight:700;font-size:12px">Install</button><button onclick="this.closest('#pwa-install-banner').remove()" style="background:none;color:#9ca3af;border:none;font-size:18px;padding:4px 6px">&times;</button></div></div><script>let _dp=null;const _b=document.getElementById('pwa-install-banner');if(window.matchMedia('(display-mode: standalone)').matches||document.referrer.includes('android-app://'))_b.remove();window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_dp=e;});document.getElementById('pwa-install-btn').onclick=async()=>{if(_dp){_dp.prompt();await _dp.userChoice;_b.remove();}else{document.getElementById('pwa-install-sub').textContent='Open browser menu (â‹®) -> Install app';}};</script>
+<div id="pwa-install-banner" style="display:flex;position:fixed;bottom:76px;left:12px;right:12px;z-index:9999;background:#16181d;border:1px solid #1db954;border-radius:14px;padding:12px 14px;box-shadow:0 10px 25px rgba(0,0,0,.6);align-items:center;justify-content:space-between;gap:10px;font-family:system-ui,sans-serif"><div style="display:flex;align-items:center;gap:10px"><div style="width:38px;height:38px;border-radius:9px;background:#1db954;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px">CB</div><div><div style="color:#fff;font-weight:700;font-size:14px">Install Buddy Gym App</div><div id="pwa-install-sub" style="color:#9ca3af;font-size:12px">Tap Install for full-screen &amp; offline mode</div></div></div><div style="display:flex;align-items:center;gap:6px"><button id="pwa-install-btn" style="background:#1db954;color:#fff;border:none;border-radius:9px;padding:8px 12px;font-weight:700;font-size:12px">Install</button><button onclick="this.closest('#pwa-install-banner').remove()" style="background:none;color:#9ca3af;border:none;font-size:18px;padding:4px 6px">&times;</button></div></div><script>let _dp=null;const _b=document.getElementById('pwa-install-banner');if(window.matchMedia('(display-mode: standalone)').matches||document.referrer.includes('android-app://'))_b.remove();window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();_dp=e;});document.getElementById('pwa-install-btn').onclick=async()=>{if(_dp){_dp.prompt();await _dp.userChoice;_b.remove();}else{document.getElementById('pwa-install-sub').textContent='Open browser menu (⋮) -> Install app';}};</script>
 
 
 <style id="buddy-green-lock">:root{--accent:#1db954!important;--accent-hover:#1ed760!important;--accent-soft:rgba(29,185,84,.16)!important;--accent-border:rgba(29,185,84,.38)!important}html,body{background-color:#070a08!important;min-height:100vh!important;padding-bottom:env(safe-area-inset-bottom,0px)!important;color:#f0fdf4!important}body{background-image:radial-gradient(circle at 50% 0%,rgba(29,185,84,.14),transparent 55%),linear-gradient(rgba(29,185,84,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,185,84,.04) 1px,transparent 1px)!important;background-size:100% 100%,28px 28px,28px 28px!important}*,*::before,*::after{box-shadow:none!important}*::before,*::after{background-image:none!important}div,section,article,aside,header,footer,nav,button,a,span,select,input{border-color:rgba(29,185,84,.28)!important}[style*="255, 94"],[style*="249, 115"],[style*="234, 88"],[style*="orange"],[style*="f97316"],[style*="ea580c"]{background-color:#070a08!important;background-image:none!important;border-color:rgba(29,185,84,.35)!important}nav,[class*="bottom"],[class*="nav"],[class*="tab"],footer,[style*="position: fixed"],[style*="position:fixed"]{background:#08140d!important;background-image:none!important;border-color:rgba(29,185,84,.35)!important}nav .active,nav [class*="active"],[class*="nav"] .active,[class*="tab"] .active,[aria-selected="true"]{background:rgba(29,185,84,.14)!important;border:1px solid #1db954!important;color:#1db954!important}</style>
