@@ -19,18 +19,18 @@
       --bg-input: #0E1015;
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-strong: rgba(255, 255, 255, 0.16);
-      --text-primary: #F8FAFC;
+      --text-primary: #1db954;
       --text-secondary: #94A3B8;
       --text-muted: #64748B;
-      --accent: #FF5E1A;
-      --accent-hover: #FF7338;
+      --accent: #1db954;
+      --accent-hover: #1db954;
       --accent-soft: rgba(255, 94, 26, 0.14);
       --accent-border: rgba(255, 94, 26, 0.35);
       --success: #10B981;
       --success-soft: rgba(16, 185, 129, 0.14);
       --warning: #1db954;
       --warning-soft: rgba(245, 158, 11, 0.14);
-      --danger: #EF4444;
+      --danger: #1db954;
       --danger-soft: rgba(239, 68, 68, 0.14);
       --radius-sm: 10px;
       --radius-md: 14px;
@@ -46,7 +46,7 @@
       --bg-surface: #17110F;
       --bg-elevated: #211815;
       --bg-input: #120D0B;
-      --accent: #FF6B2B;
+      --accent: #1db954;
     }
 
     * {
@@ -107,7 +107,7 @@
       width: 36px;
       height: 36px;
       border-radius: 11px;
-      background: linear-gradient(135deg, var(--accent), #FF8A3D);
+      background: linear-gradient(135deg, var(--accent), #1db954);
       color: #0A0B0E;
       font-weight: 900;
       font-size: 16px;
@@ -317,7 +317,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #FF7B39);
+      background: linear-gradient(135deg, var(--accent), #1db954);
       color: #0A0B0E;
       box-shadow: 0 6px 20px -4px rgba(255, 94, 26, 0.45);
     }
@@ -537,7 +537,7 @@
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), #FF9654);
+      background: linear-gradient(90deg, var(--accent), #1db954);
       border-radius: 999px;
       transition: width 0.28s ease;
     }
@@ -631,7 +631,7 @@
     .cal-cell.status-missed {
       background: var(--danger-soft);
       border-color: rgba(239, 68, 68, 0.35);
-      color: #FCA5A5;
+      color: #1db954;
     }
 
     .cal-cell.is-today {
@@ -690,7 +690,7 @@
       transform: translateX(-50%) translateY(16px);
       z-index: 105;
       background: #1E222D;
-      color: #F8FAFC;
+      color: #1db954;
       border: 1px solid var(--accent-border);
       padding: 10px 16px;
       border-radius: 999px;
@@ -759,7 +759,7 @@
     }
 
     .cmyb-qr {
-      background: #FFFFFF;
+      background: #1db954;
       padding: 12px;
       border-radius: 14px;
       display: flex;
@@ -1011,7 +1011,7 @@
         <div class="pill-row" style="justify-content:space-between; padding-top:4px;">
           <span class="chip chip-success">● Workout Done</span>
           <span class="chip">● Rest Day (Safe)</span>
-          <span class="chip" style="color:#FCA5A5; border-color:rgba(239,68,68,0.35);">● Missed</span>
+          <span class="chip" style="color:#1db954; border-color:rgba(239,68,68,0.35);">● Missed</span>
         </div>
       </div>
 
@@ -1189,7 +1189,7 @@
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
         <span class="chip chip-accent">₹10 / MONTH PASS</span>
         <span id="cmyb-id" style="font-size:11px;color:#94A3B8;font-weight:700;"></span>
-        <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px;cursor:pointer;">✕</button>
+        <button type="button" id="cmyb-close" onclick="cmybClose()" style="background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:4px 10px;cursor:pointer;">✕</button>
       </div>
       <div>
         <h2 class="h2" id="cmyb-gate-title">CALL ME YOUR BUDDY Pass</h2>
@@ -1201,13 +1201,13 @@
         <img id="cmyb-qr-img" alt="UPI ₹10 Payment QR Code" />
         <span style="font-size:12px;font-weight:800;">xryptamal@fam • ₹10 / 30 Days</span>
       </div>
-      <a id="cmyb-wa" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#F8FAFC;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700;font-size:13px;">
+      <a id="cmyb-wa" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700;font-size:13px;">
         Message Buddy on WhatsApp
       </a>
       <form onsubmit="cmybUnlock(event)" style="display:flex;flex-direction:column;gap:8px;">
-        <input id="cmyb-code" placeholder="Enter monthly code" autocomplete="off" required style="height:42px;padding:0 12px;border-radius:10px;background:#0E1015;color:#F8FAFC;border:1px solid rgba(255,255,255,.15);font-size:14px;" />
-        <div id="cmyb-err" style="font-size:12px;color:#EF4444;display:none;"></div>
-        <button type="submit" id="cmyb-btn" style="height:44px;border:none;border-radius:12px;background:#FF5E1A;color:#0A0B0E;font-weight:800;cursor:pointer;font-size:14px;">
+        <input id="cmyb-code" placeholder="Enter monthly code" autocomplete="off" required style="height:42px;padding:0 12px;border-radius:10px;background:#0E1015;color:#1db954;border:1px solid rgba(255,255,255,.15);font-size:14px;" />
+        <div id="cmyb-err" style="font-size:12px;color:#1db954;display:none;"></div>
+        <button type="submit" id="cmyb-btn" style="height:44px;border:none;border-radius:12px;background:#1db954;color:#0A0B0E;font-weight:800;cursor:pointer;font-size:14px;">
           Unlock 30 Days
         </button>
       </form>
