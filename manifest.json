@@ -6,7 +6,7 @@
   "scope": "/call-me-your-buddy/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#090c0a",
+  "background_color": "#070a08",
   "theme_color": "#ff6b00",
   "icons": [
     {
