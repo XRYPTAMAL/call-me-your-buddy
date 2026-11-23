@@ -795,7 +795,7 @@
         </div>
       </div>
       <div class="header-streak" id="header-streak-pill" title="Current Workout Streak">
-        <span>ðŸ”¥</span>
+        <span>🔥</span>
         <span id="header-streak-count">0d</span>
       </div>
     </div>
@@ -1203,7 +1203,7 @@
       </div>
       <div class="cmyb-qr">
         <img id="cmyb-qr-img" alt="UPI â‚¹10 Payment QR Code" />
-        <span style="font-size:12px;font-weight:800;">xryptamal@fam â€¢ â‚¹10 / 30 Days</span>
+        <span style="font-size:12px;font-weight:800;">xryptamal@fam • â‚¹10 / 30 Days</span>
       </div>
       <a id="cmyb-wa" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:11px;border-radius:12px;background:#191C24;color:#1db954;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700;font-size:13px;">
         Message Buddy on WhatsApp
@@ -1593,7 +1593,7 @@
       document.getElementById("header-streak-count").textContent = `${streakInfo.currentStreak}d`;
 
       const displayName = appState.profile.name || "Buddy";
-      document.getElementById("dash-greeting").textContent = `LET'S WORK, ${displayName.toUpperCase()} â€¢ ${todayName.toUpperCase()}`;
+      document.getElementById("dash-greeting").textContent = `LET'S WORK, ${displayName.toUpperCase()} • ${todayName.toUpperCase()}`;
 
       const motIdx = (now.getDate() + appState.workouts.length) % MOTIVATIONAL_LINES.length;
       document.getElementById("dash-motivation").textContent = MOTIVATIONAL_LINES[motIdx];
@@ -1613,8 +1613,8 @@
         startBtn.onclick = () => navigateTo("workout");
       } else if (!isScheduled) {
         document.getElementById("dash-today-title").textContent = "Rest & Recovery Day";
-        musclesEl.innerHTML = `<span class="chip">Active Recovery â€¢ Streak Safe</span>`;
-        previewEl.innerHTML = `<p class="muted">No workout scheduled for ${todayName}. Hydrate, stretch, and recoverâ€”or start any custom split manually.</p>`;
+        musclesEl.innerHTML = `<span class="chip">Active Recovery • Streak Safe</span>`;
+        previewEl.innerHTML = `<p class="muted">No workout scheduled for ${todayName}. Hydrate, stretch, and recover—or start any custom split manually.</p>`;
         startBtn.textContent = "Train Anyway (Pick Split)";
         startBtn.onclick = () => openCustomSessionPicker();
       } else {
@@ -1690,7 +1690,7 @@
         <div class="exercise-item" style="cursor:pointer;" onclick="openWorkoutDetailModal('${w.id}')">
           <div style="min-width:0;">
             <div class="h3" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(w.splitTitle)}</div>
-            <div class="small-muted" style="margin-top:2px;">${formatDisplayDate(w.dateKey)} â€¢ ${totalSets} Sets â€¢ ${Math.round(w.totalVolume)} ${unit}</div>
+            <div class="small-muted" style="margin-top:2px;">${formatDisplayDate(w.dateKey)} • ${totalSets} Sets • ${Math.round(w.totalVolume)} ${unit}</div>
             <div class="pill-row" style="margin-top:6px;">
               ${muscles.map((m) => `<span class="chip">${escapeHtml(m)}</span>`).join("")}
             </div>
@@ -1750,7 +1750,7 @@
               <div style="min-width:0; flex:1;">
                 <div class="h3">${escapeHtml(ex.name)}</div>
                 <div class="small-muted" style="margin-top:3px;">
-                  <span style="color:var(--accent);">${escapeHtml(ex.muscle)}</span> â€¢ ${ex.sets} sets Ã— ${ex.reps} reps â€¢ ${ex.weight} ${unit}
+                  <span style="color:var(--accent);">${escapeHtml(ex.muscle)}</span> • ${ex.sets} sets Ã— ${ex.reps} reps • ${ex.weight} ${unit}
                 </div>
               </div>
               <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
@@ -1978,7 +1978,7 @@
         return `
           <div class="exercise-item" style="cursor:pointer;" onclick="closeModal(); startWorkoutFromDay('${day}', true);">
             <div>
-              <div class="h3">${day} â€” ${escapeHtml(p.title || (count ? `${day} Split` : "Empty / Custom"))}</div>
+              <div class="h3">${day} — ${escapeHtml(p.title || (count ? `${day} Split` : "Empty / Custom"))}</div>
               <div class="small-muted">${count} planned exercises</div>
             </div>
             <span class="btn btn-primary btn-sm">Start</span>
@@ -2089,7 +2089,7 @@
             <div class="exercise-item">
               <div>
                 <div class="h3">${escapeHtml(ex.name)}</div>
-                <div class="small-muted">${escapeHtml(ex.muscle)} â€¢ ${ex.sets} sets Ã— ${ex.reps} reps â€¢ ${ex.weight}${appState.profile.unit}</div>
+                <div class="small-muted">${escapeHtml(ex.muscle)} • ${ex.sets} sets Ã— ${ex.reps} reps • ${ex.weight}${appState.profile.unit}</div>
               </div>
             </div>
           `).join("");
@@ -2584,7 +2584,7 @@
       } else {
         const diffPct = Math.round(((thisWeekVol - lastWeekVol) / Math.max(1, lastWeekVol)) * 100);
         const sign = diffPct >= 0 ? "+" : "";
-        compEl.innerHTML = `This week: <strong>${Math.round(thisWeekVol)} ${unit}</strong> (${thisWeekCount} sessions) vs Last week: <strong>${Math.round(lastWeekVol)} ${unit}</strong> (${lastWeekCount} sessions) â€” <span style="color:${diffPct >= 0 ? "var(--success)" : "var(--warning)"}; font-weight:800;">${sign}${diffPct}% volume</span>.`;
+        compEl.innerHTML = `This week: <strong>${Math.round(thisWeekVol)} ${unit}</strong> (${thisWeekCount} sessions) vs Last week: <strong>${Math.round(lastWeekVol)} ${unit}</strong> (${lastWeekCount} sessions) — <span style="color:${diffPct >= 0 ? "var(--success)" : "var(--warning)"}; font-weight:800;">${sign}${diffPct}% volume</span>.`;
       }
 
       const streakInfo = calculateStreakMetrics();
@@ -2618,7 +2618,7 @@
             <div class="stack-sm" style="gap:4px;">
               <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700;">
                 <span>${escapeHtml(muscle)}</span>
-                <span class="small-muted">${data.sets} sets â€¢ ${Math.round(data.volume)} ${unit}</span>
+                <span class="small-muted">${data.sets} sets • ${Math.round(data.volume)} ${unit}</span>
               </div>
               <div class="progress-track">
                 <div class="progress-fill" style="width:${widthPct}%;"></div>
@@ -2831,8 +2831,8 @@
             <div>
               <div class="h3">${formatDisplayDate(m.dateKey)}</div>
               <div class="small-muted">
-                ${m.weight ? `Weight: ${m.weight} ${appState.profile.unit} â€¢ ` : ""}
-                ${m.bodyFat ? `Body Fat: ${m.bodyFat}% â€¢ ` : ""}
+                ${m.weight ? `Weight: ${m.weight} ${appState.profile.unit} • ` : ""}
+                ${m.bodyFat ? `Body Fat: ${m.bodyFat}% • ` : ""}
                 ${m.chest ? `Chest: ${m.chest} cm` : ""}
               </div>
             </div>
@@ -3011,7 +3011,7 @@
       const id = buddyId();
       document.getElementById("cmyb-id").textContent = id;
       document.getElementById("cmyb-gate-title").textContent = hardLock
-        ? "Renew Monthly Pass â€” â‚¹10"
+        ? "Renew Monthly Pass — â‚¹10"
         : "CALL ME YOUR BUDDY Pass";
       document.getElementById("cmyb-close").style.display = hardLock ? "none" : "inline-block";
       const upiUri = `upi://pay?pa=${encodeURIComponent(UPI)}&pn=Amaldev.A&am=10&cu=INR&tn=${encodeURIComponent("CALL ME YOUR BUDDY " + id)}`;
